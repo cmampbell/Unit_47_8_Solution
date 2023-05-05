@@ -80,19 +80,16 @@ describe("maxSum", function() {
 
 describe("nextLarger", function() {
   it("handles simple trees", function() {
-    console.log("handles simple trees")
     expect(smallTree.nextLarger(4)).toBe(5);
     expect(smallTree.nextLarger(5)).toBe(6);
     expect(smallTree.nextLarger(6)).toBe(null);
   });
 
   it("handles empty trees", function() {
-    console.log("handles empty trees")
     expect(emptyTree.nextLarger(0)).toBe(null);
   });
 
   it("handles more complex trees", function() {
-    console.log("handles more complex trees")
     expect(largeTree.nextLarger(1)).toBe(2);
     expect(largeTree.nextLarger(2)).toBe(3);
     expect(largeTree.nextLarger(3)).toBe(5);
