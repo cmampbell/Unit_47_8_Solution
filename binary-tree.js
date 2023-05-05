@@ -117,26 +117,18 @@ class BinaryTree {
    * which is larger than lowerBound. Return null if no such value exists. */
 
   nextLarger(lowerBound) {
-    // find node with least difference between lowerBound and node value
-
-    // loop
-    // could use depth first search, since node placement doesn't seem to matter
-    // assuming they are all integers
-    // cover the edge case if lowerBound - node.val <= 1 return that node
-
-    // else we keep track of the most recent found value closest to lowerBound
-    // when stack is clear, we return the found value
-
     if(this.root === null) return null
 
     const stack = [this.root]
+
+    // use this variable keep track of the value closest to lowerBound
+    // using Infinity here because it is larger than any number
     let closestValue = Infinity
 
     while(stack.length){
       let current = stack.pop()
 
-      // if (current.val + 1 === lowerBound) return current.val
-
+      // if value is smaller than lowerBound we do nothing, continue loop
       if(current.val > lowerBound){
         if(Math.abs(current.val - lowerBound) < closestValue){
           closestValue = current.val
@@ -149,9 +141,10 @@ class BinaryTree {
       if(current.right){
         stack.push(current.right)
       }
-
     }
 
+    // if closestValue is still infinity we know
+    // there is no node in tree larger than lowerBound
     if(closestValue === Infinity) return null
 
     return closestValue
